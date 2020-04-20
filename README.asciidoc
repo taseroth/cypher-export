@@ -1,0 +1,20 @@
+## Neo4j exporter tool
+
+A very simple tool if you want to export your Neo4j database but can't use the proper tools. Please use the provided Neo4j tooling if possible.  In case you are not able to use them (Aura), this command line tool helps to export the data (and indexes / constraints) to a text file. The exported file can than be imported using the cypher shell or the Neo4j browser.
+
+[source]
+----
+java -jar target/cypher-export-0.0.1.jar
+usage: ExportRunner
+ -cypherFormat <arg>   cypher format to use, can be 'create', 'updateAll,
+                       'addStructure' or 'updateStructure'. Defaults to
+                       'updateAll'
+ -file <arg>           filename to stream Cypher to
+ -format <arg>         export format to use, can be 'cypher-shell',
+                       'neo4j-shell', 'plain'. Defaults to 'plain'
+ -passwd <arg>         password for authentication
+ -url <arg>            URL of the Neo4j installation
+ -user <arg>           username for authentication
+----
+
+It uses the https://neo4j.com/docs/labs/apoc/current/export/cypher/[apoc.export.cypher.all] from the great APOC plugin (which needs to be enabled on the database). See the documentation there for an explanation of the `-cypherFormat` and `-format`  options.
